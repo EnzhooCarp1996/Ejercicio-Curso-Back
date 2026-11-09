@@ -1,9 +1,9 @@
-import fs from "fs";
+import fs from "fs/promises";
 import path from "path";
 // import datos from "../data/data.json" with { type: "json" };
 
 const _dirname = import.meta.dirname;
-const dataPath = path.join(_dirname, "../data/products.json");
+const dataPath = path.join(_dirname, "../data/data.json");
 
 export async function getProductsModels() {
   try {

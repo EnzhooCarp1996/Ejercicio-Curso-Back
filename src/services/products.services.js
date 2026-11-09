@@ -267,22 +267,21 @@ const products = [
     },
   },
 ];*/
-import { getProductsModels } from "../models/products_OLD.models.js";
+import { obtenerProductos, obtenerPorId, buscarPorConsulta } from "../models/products.models.js";
 
 export const getAllProductsService = async (category) => {
-  const products = await getProductsModels();
+  
   if (category) {
-    const products_q = await products.filter(
-      (product) => product.category == category,
-    );
+    const products_q = await buscarPorConsulta(category);
     return products_q;
   } else {
+    const products = await obtenerProductos();
+    console.log(products);
     return products;
   }
 };
 
 export const getProductByIdService = async (id) => {
-  const products = await getProductsModels();
-  const product = await products.find((product) => product.id == id);
+  const product = await obtenerPorId(id);
   return product;
 };
